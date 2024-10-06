@@ -18,7 +18,8 @@ import {
     getFeatureByURLParam,
     spaceLayer,
     spaceProvider,
-    displayGeoJSON
+    displayGeoJSON,
+    displayGeoJSONFilter
 } from './components/loadData'
 
 import {
@@ -449,6 +450,10 @@ document.body.addEventListener('click', function (event) {
     }
 });
 
+document.getElementById('set-alt-btn').addEventListener('click', function(e) {
+    displayGeoJSON(JSON.parse(editor.getModel().getValue()), true);
+})
+
 document.getElementById('showQuadkeys').addEventListener('click', function () {
     if (isDebug) {
         display.debug(false);
@@ -507,5 +512,4 @@ document.getElementById("darkMode").addEventListener('click', function () {
     document.getElementById('editor').style.display = "block";
     document.getElementById('editor').className = "tabLinks selected";
 })
-
 setTimeout(() => display.resize(), 0);

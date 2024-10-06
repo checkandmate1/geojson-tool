@@ -13,7 +13,7 @@ import {onlyMapView} from "./common";
 let spaceLayer,
 spaceProvider,
 token = null;
-
+let altitude = 0;
 
 function loader(type) {
     if(type === 'block') {
@@ -38,6 +38,11 @@ document.getElementById('authButton').addEventListener('click', function(e) {
         console.log(document.getElementById('authButton'));
         document.getElementById('authButton').innerHTML = 'Clear';
     }
+})
+
+document.getElementById('set-alt-btn').addEventListener('click', function(e) {
+    altitude = parseInt(document.getElementById('altitude').value, 10);
+    console.log(altitude, "altituyde check");
 })
 
 export function handleMultipleLocalFiles(fileList) {
@@ -286,6 +291,8 @@ export function displayGeoJSON(collection) {
         }
     }
 
+    collection = collection.filter(displayGeoJSONFilter);
+
     let length = collection.length;
 
     if( length )
@@ -329,6 +336,22 @@ export function displayGeoJSON(collection) {
             alertBar(1, 'success', featureProvider.cnt + ' feature(s) added successfully.');
         }
     }
+}
+
+export function displayGeoJSONFilter(feature) {
+    // Check if the feature has altitude range and filter accordingly
+    if (feature.properties) {
+        if (feature.properties.altitude_range) {
+            let [minAltitude, maxAltitude] = feature.properties.altitude_range;
+            return ((altitude >= minAltitude && altitude <= maxAltitude) || (altitude === -1));
+        }
+        // Include features with a valid altitude property (not -1)
+        else if (feature.properties.altitude !== undefined && altitude == -1) {
+            return true;
+        }
+    }
+
+    return true; // Include the feature if no altitude filtering is applicable
 }
 
 export { spaceLayer, spaceProvider }
