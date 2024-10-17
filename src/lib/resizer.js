@@ -39,4 +39,4 @@ function resizerXY(resizerID, mousemove) {
     resizer(resizerID, mousemove, "ne-resize");
 }
 
-export { resizer, resizerX, resizerY, resizerXY }
+module.exports = { resizer, resizerX, resizerY, resizerXY };
