@@ -3,9 +3,10 @@
  * Licensed under MIT, see full license in LICENSE
  * SPDX-License-Identifier: MIT
  */
-
-const resizerX = require('./lib/resizer');
-const geojsonValidation = require('geojson-validation');
+import resizerX from './lib/resizer';
+import geojsonValidation from 'geojson-validation';
+// const resizerX = require('./lib/resizer');
+// const geojsonValidation = require('geojson-validation');
 import './style/style'
 import isEqual from 'lodash.isequal'
 import JSONFormatter from 'json-formatter-js'
