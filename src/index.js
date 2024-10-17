@@ -3,17 +3,16 @@
  * Licensed under MIT, see full license in LICENSE
  * SPDX-License-Identifier: MIT
  */
-import resizerX from './lib/resizer';
-import geojsonValidation from 'geojson-validation';
-// const resizerX = require('./lib/resizer');
-// const geojsonValidation = require('geojson-validation');
-import './style/style'
-import isEqual from 'lodash.isequal'
-import JSONFormatter from 'json-formatter-js'
 
-import { featureProvider } from './components/hereMap/hereMap'
+const resizerX = require('./lib/resizer');
+const geojsonValidation = require('geojson-validation');
+require('./style/style');
+const isEqual = require('lodash.isequal');
+const JSONFormatter = require('json-formatter-js');
 
-import {
+const { featureProvider } = require('./components/hereMap/hereMap');
+
+const {
     handleMultipleLocalFiles,
     multipleHttpGetAsync,
     getFeatureByURLParam,
@@ -21,22 +20,22 @@ import {
     spaceProvider,
     displayGeoJSON,
     displayGeoJSONFilter
-} from './components/loadData'
+} = require('./components/loadData');
 
-import {
+const {
     isPosition,
     clearURLParam,
     resizeX,
     getLatLong,
     IsJsonString
-} from './components/common'
+} = require('./components/common');
 
-import { editor, startValue } from './components/editor'
-import { alertBar } from './components/alertBar.js'
-import './components/eventHandling'
-import { GeoRect } from "@here/xyz-maps-core";
-import { Selection } from 'monaco-editor'
-import * as monaco from "monaco-editor";
+const { editor, startValue } = require('./components/editor');
+const { alertBar } = require('./components/alertBar.js');
+require('./components/eventHandling');
+const { GeoRect } = require("@here/xyz-maps-core");
+const { Selection } = require('monaco-editor');
+const monaco = require("monaco-editor");
 
 let HERE = window.HERE,
     isPrettyPrint = false,
