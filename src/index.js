@@ -6,7 +6,7 @@
 
 const resizerX = require('./lib/resizer');
 const geojsonValidation = require('geojson-validation');
-require('./style/style');
+require('./style/style.css');
 const isEqual = require('lodash.isequal');
 const JSONFormatter = require('json-formatter-js');
 
