@@ -10,16 +10,13 @@ const webpack = require("webpack"),
 		MonacoWebpackPlugin = require('monaco-editor-webpack-plugin'),
 		CopyWebpackPlugin = require('copy-webpack-plugin');
 
-
 module.exports = {
 	stats: 'errors-only',
 	mode: 'development',
-	entry: [
-		"./src/index.js"
-	],
+	entry: './src/index.js',
 	output: {
-		filename: "bundle.js",
-		path: path.join(__dirname, 'dist')
+		filename: 'bundle.js',
+		path: path.resolve(__dirname, 'dist')
 	},
 	devServer: {
 		// inline: true,
@@ -87,6 +84,6 @@ module.exports = {
 			child_process: false
 		},
 		modules: ['node_modules'],
-extensions: ['.js', '.scss', '.html', '.css']
-}
+		extensions: ['.js', '.scss', '.html', '.css']
+	}
 }
